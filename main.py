@@ -16,7 +16,7 @@ class World:
 # котики
 class Cats:
     def get_dict(self):
-        return dict([('😂', 11), ('🥵', 12), ('😡', 13), ('😰', 14), ('🥺', 15)])
+        return dict([('😂', 'aiogram_pictures/cat_1.jpg'), ('🥵', 'aiogram_pictures/cat_2.jpg'), ('😡', 'aiogram_pictures/cat_3.jpg'), ('😰', 'aiogram_pictures/cat_4.jpg'), ('🥺', 'aiogram_pictures/cat_5.jpg')])
 
 #ITMO
 class Itmo:
@@ -30,6 +30,7 @@ logging.basicConfig(level=logging.INFO)
 bot = Bot(token=config.TOKEN)
 dp = Dispatcher(bot)
 world = World()
+x = 0
 
 # voice delete
 #   @dp.message_handler(content_types=[""])
@@ -46,32 +47,48 @@ async def send_welcome(message: types.Message):
 @dp.message_handler()
 async def echo(message: types.Message):
     global world
-    if "😸 Котики" in message.text:
-        world = Cats()
-        await message.answer("Отлично! Осталось за малым, выбирай смайлик", reply_markup=nav.emojiMenu)
-    elif "👨‍💻 Итмо" in message.text:
-        world = Itmo()
-        await message.answer("Отлично! Осталось за малым, выбирай смайлик", reply_markup=nav.emojiMenu)
-    # else:
-    #     world.get_dict()
-    #     await message.answer("Хммм", reply_markup=nav.emojiMenu)
+    global x
 
-#await message.answer(world.get_dict()['😂'] + "\nПонравилось?)\nЕсли надо ещё, продолжай отправлять смайлики!")
+    if x == 0:
+        if "кот" in message.text.lower():
+            world = Cats()
+            await message.answer("Отлично! Осталось за малым, выбирай смайлик", reply_markup=nav.emojiMenu)
+            x = 1
+        elif "итмо" in message.text.lower():
+            world = Itmo()
+            await message.answer("Отлично! Осталось за малым, выбирай смайлик", reply_markup=nav.emojiMenu)
+            x = 1
+        else:
+            await message.answer("Мне кажется, лучше следовать инструкции и выбирать вселенную из предложенных в менюшке 😉", reply_markup=nav.worldMenu)
+        return
 
-    elif '😂' in message.text:
-        await message.answer(world.get_dict()['😂'])
-    elif '🥵' in message.text:
-        await message.answer(world.get_dict()['🥵'])
-    elif '😡' in message.text:
-        await message.answer(world.get_dict()['😡'])
-    elif '😰' in message.text:
-        await message.answer(world.get_dict()['😰'])
-    elif '🥺' in message.text:
-        await message.answer(world.get_dict()['🥺'])
-    elif "Выбрать вселенную" in message.text:
-        await message.answer("Правильно, выбери что-нибудь ещё", reply_markup=nav.worldMenu)
-    else:
-        await message.answer("Извини, похоже у меня ничего нет с этим смайликом или ты просто сделал что-то не так 😔. Попробуй снова", reply_markup=nav.worldMenu)
+    if x == 1:
+        if '😂' in message.text:
+            media = types.MediaGroup()
+            media.attach_photo(types.InputFile(world.get_dict()['😂']))
+            await message.answer_media_group(media=media)
+        elif '🥵' in message.text:
+            media = types.MediaGroup()
+            media.attach_photo(types.InputFile(world.get_dict()['🥵']))
+            await message.answer_media_group(media=media)
+        elif '😡' in message.text:
+            media = types.MediaGroup()
+            media.attach_photo(types.InputFile(world.get_dict()['😡']))
+            await message.answer_media_group(media=media)
+        elif '😰' in message.text:
+            media = types.MediaGroup()
+            media.attach_photo(types.InputFile(world.get_dict()['😰']))
+            await message.answer_media_group(media=media)
+        elif '🥺' in message.text:
+            media = types.MediaGroup()
+            media.attach_photo(types.InputFile(world.get_dict()['🥺']))
+            await message.answer_media_group(media=media)
+        elif "Выбрать вселенную" in message.text:
+            await message.answer("Правильно, выбери что-нибудь ещё", reply_markup=nav.worldMenu)
+            x = 0
+        else:
+            await message.answer("Извини, похоже у меня ничего нет с этим смайликом 😔. Попробуй снова, но присылай через меню", reply_markup=nav.emojiMenu)
+
 
 
 
