@@ -15,8 +15,11 @@ btnCatEmoji2 = KeyboardButton("🥵")
 btnCatEmoji3 = KeyboardButton("😡")
 btnCatEmoji4 = KeyboardButton("😰")
 btnCatEmoji5 = KeyboardButton("🥺")
-CatEmojiMenu = ReplyKeyboardMarkup(resize_keyboard=True).add(btnCatEmoji5, btnCatEmoji4, btnCatEmoji3,
-                                                             btnCatEmoji2, btnCatEmoji1, btnMain)
+btnCatEmoji6 = KeyboardButton("😑")
+btnCatEmoji7 = KeyboardButton("💪")
+btnCatEmoji8 = KeyboardButton("😛")
+CatEmojiMenu = ReplyKeyboardMarkup(resize_keyboard=True).add(btnCatEmoji8, btnCatEmoji7, btnCatEmoji6, btnCatEmoji5, btnCatEmoji4,
+                                                             btnCatEmoji3, btnCatEmoji2, btnCatEmoji1, btnMain)
 
 # --- Меню смайлов олдов ---
 btnOldEmoji1 = KeyboardButton('🖕')
@@ -29,3 +32,7 @@ btnOldEmoji7 = KeyboardButton('😂')
 btnOldEmoji8 = KeyboardButton('😡')
 OldEmojiMenu = ReplyKeyboardMarkup(resize_keyboard=True).add(btnOldEmoji8, btnOldEmoji7, btnOldEmoji6, btnOldEmoji5, btnOldEmoji4,
                                                              btnOldEmoji3, btnOldEmoji2, btnOldEmoji1, btnMain)
+
+# --- Меню для случаных мемов ---
+btnAgain = KeyboardButton("Присылай!")
+funMenu = ReplyKeyboardMarkup(resize_keyboard=True).add(btnAgain, btnMain)
