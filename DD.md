@@ -9,7 +9,7 @@
 * Шутки по запросу для поднятия настроения
 
 ### Схема взаимодействия пользователя с ботом:
-[<img src="aiogram_pictures/DD_1.jpg" width="500"/>]()
+[<img src="aiogram_pictures/DD_1.jpg" width="700"/>]()
 
 ### Модули:
 * Python 3.9
