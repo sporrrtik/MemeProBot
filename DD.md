@@ -17,8 +17,12 @@
 * Telegram Bot API
 
 ###Интерфейс взаимодействия
-[<img src="aiogram_pictures/интерфейс_1.jpg" width="500"/>]()
-[<img src="aiogram_pictures/интерфейс_2.jpg" width="500"/>]()
+
+
+
+
+[<img src="aiogram_pictures/Интерфейс_1.jpg" width="300"/>]()
+[<img src="aiogram_pictures/Интерфейс_2.jpg" width="300"/>]()
 
 ###План выполнения
 * Бот-попугай
