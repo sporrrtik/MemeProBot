@@ -42,7 +42,7 @@ dp = Dispatcher(bot)
 
 world = World()
 x = 0
-arrFun = [0] * 13
+arrFun = [0] * 12
 
 # voice delete
 #   @dp.message_handler(content_types=[""])
@@ -79,7 +79,8 @@ async def echo(message: types.Message):
             x = 2
         elif "😔" in message.text:
             await message.answer("Не переживай, развеселим😉", reply_markup=nav.funMenu)
-            for i in range(13):
+            i = 0
+            for i in range(12):
                 arrFun[i] = i + 1
             x = 3
         else:
